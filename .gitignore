@@ -1,0 +1,7 @@
+venv/
+.env
+*.csv
+__pycache__/
+.dbt/
+profiles.yml
+*.pyc
