@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: raw
+    database: MARKETING_DB
+    schema: RAW
+    tables:
+      - name: raw_ad_channels
+      - name: raw_vehicles
+      - name: raw_spend
+      - name: raw_clicks
+      - name: raw_locks
+      - name: raw_sales

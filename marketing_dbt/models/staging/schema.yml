@@ -1,0 +1,62 @@
+version: 2
+
+models:
+  - name: stg_ad_channels
+    columns:
+      - name: channel_id
+        tests:
+          - not_null
+          - unique
+      - name: channel_category
+        tests:
+          - not_null
+
+  - name: stg_clicks
+    columns:
+      - name: user_id
+        tests:
+          - not_null
+      - name: channel_id
+        tests:
+          - not_null
+      - name: click_datetime
+        tests:
+          - not_null
+
+  - name: stg_locks
+    columns:
+      - name: lock_id
+        tests:
+          - not_null
+          - unique
+      - name: user_id
+        tests:
+          - not_null
+
+  - name: stg_sales
+    columns:
+      - name: sale_id
+        tests:
+          - not_null
+          - unique
+      - name: user_id
+        tests:
+          - not_null
+
+  - name: stg_spend
+    columns:
+      - name: channel_id
+        tests:
+          - not_null
+      - name: spend
+        tests:
+          - not_null
+
+  - name: stg_vehicles
+    columns:
+      - name: make
+        tests:
+          - not_null
+      - name: avg_margin
+        tests:
+          - not_null
