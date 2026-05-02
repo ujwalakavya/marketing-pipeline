@@ -20,7 +20,7 @@ print("Connecting to Snowflake...")
 conn = snowflake.connector.connect(
     user=os.environ["SNOWFLAKE_USER"],
     password=os.environ["SNOWFLAKE_PASSWORD"],
-    account="JICPOWL-QIB81371",
+    account="DVFJSCG-ZEB13284",
     warehouse="MARKETING_WH",
     database="MARKETING_DB",
     schema="RAW"
