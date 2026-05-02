@@ -1,0 +1,57 @@
+[2026-05-02T20:59:11.474+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: marketing_pipeline.ingest_csv_to_snowflake manual__2026-05-02T20:57:03.322803+00:00 [queued]>
+[2026-05-02T20:59:11.479+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: marketing_pipeline.ingest_csv_to_snowflake manual__2026-05-02T20:57:03.322803+00:00 [queued]>
+[2026-05-02T20:59:11.479+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 2
+[2026-05-02T20:59:11.486+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): ingest_csv_to_snowflake> on 2026-05-02 20:57:03.322803+00:00
+[2026-05-02T20:59:11.490+0000] {standard_task_runner.py:60} INFO - Started process 140 to run task
+[2026-05-02T20:59:11.493+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'marketing_pipeline', 'ingest_csv_to_snowflake', 'manual__2026-05-02T20:57:03.322803+00:00', '--job-id', '14', '--raw', '--subdir', 'DAGS_FOLDER/marketing_pipeline.py', '--cfg-path', '/tmp/tmp2zbk9pix']
+[2026-05-02T20:59:11.495+0000] {standard_task_runner.py:88} INFO - Job 14: Subtask ingest_csv_to_snowflake
+[2026-05-02T20:59:11.545+0000] {task_command.py:423} INFO - Running <TaskInstance: marketing_pipeline.ingest_csv_to_snowflake manual__2026-05-02T20:57:03.322803+00:00 [running]> on host 855b77be8859
+[2026-05-02T20:59:11.630+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ujwala' AIRFLOW_CTX_DAG_ID='marketing_pipeline' AIRFLOW_CTX_TASK_ID='ingest_csv_to_snowflake' AIRFLOW_CTX_EXECUTION_DATE='2026-05-02T20:57:03.322803+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-05-02T20:57:03.322803+00:00'
+[2026-05-02T20:59:13.735+0000] {logging_mixin.py:188} INFO - Connecting to Snowflake...
+✅ Connected successfully
+
+──────────────────────────────────────────────────
+Loading: data/ad_channels.csv → RAW_AD_CHANNELS
+[2026-05-02T20:59:13.736+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/marketing_pipeline.py", line 21, in run_ingest
+    raise Exception(result.stderr)
+Exception: Traceback (most recent call last):
+  File "/opt/***/ingest/load_raw.py", line 58, in <module>
+    df = pd.read_csv(file_path, encoding='utf-8-sig')
+  File "/home/***/.local/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 912, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/home/***/.local/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 577, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/home/***/.local/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1407, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/home/***/.local/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1661, in _make_engine
+    self.handles = get_handle(
+  File "/home/***/.local/lib/python3.8/site-packages/pandas/io/common.py", line 859, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'data/ad_channels.csv'
+
+[2026-05-02T20:59:13.746+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=marketing_pipeline, task_id=ingest_csv_to_snowflake, execution_date=20260502T205703, start_date=20260502T205911, end_date=20260502T205913
+[2026-05-02T20:59:13.758+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 14 for task ingest_csv_to_snowflake (Traceback (most recent call last):
+  File "/opt/***/ingest/load_raw.py", line 58, in <module>
+    df = pd.read_csv(file_path, encoding='utf-8-sig')
+  File "/home/***/.local/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 912, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/home/***/.local/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 577, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/home/***/.local/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1407, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/home/***/.local/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1661, in _make_engine
+    self.handles = get_handle(
+  File "/home/***/.local/lib/python3.8/site-packages/pandas/io/common.py", line 859, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'data/ad_channels.csv'
+; 140)
+[2026-05-02T20:59:13.768+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2026-05-02T20:59:13.791+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
