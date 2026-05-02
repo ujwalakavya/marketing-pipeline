@@ -1,0 +1,30 @@
+[2026-05-02T22:53:45.023+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: marketing_pipeline.dbt_run_marts manual__2026-05-02T22:50:59.624544+00:00 [queued]>
+[2026-05-02T22:53:45.029+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: marketing_pipeline.dbt_run_marts manual__2026-05-02T22:50:59.624544+00:00 [queued]>
+[2026-05-02T22:53:45.030+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 2
+[2026-05-02T22:53:45.036+0000] {taskinstance.py:2217} INFO - Executing <Task(BashOperator): dbt_run_marts> on 2026-05-02 22:50:59.624544+00:00
+[2026-05-02T22:53:45.040+0000] {standard_task_runner.py:60} INFO - Started process 195 to run task
+[2026-05-02T22:53:45.042+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'marketing_pipeline', 'dbt_run_marts', 'manual__2026-05-02T22:50:59.624544+00:00', '--job-id', '10', '--raw', '--subdir', 'DAGS_FOLDER/marketing_pipeline.py', '--cfg-path', '/tmp/tmpgb90v3m4']
+[2026-05-02T22:53:45.043+0000] {standard_task_runner.py:88} INFO - Job 10: Subtask dbt_run_marts
+[2026-05-02T22:53:45.063+0000] {task_command.py:423} INFO - Running <TaskInstance: marketing_pipeline.dbt_run_marts manual__2026-05-02T22:50:59.624544+00:00 [running]> on host ***-worker
+[2026-05-02T22:53:45.091+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ujwala' AIRFLOW_CTX_DAG_ID='marketing_pipeline' AIRFLOW_CTX_TASK_ID='dbt_run_marts' AIRFLOW_CTX_EXECUTION_DATE='2026-05-02T22:50:59.624544+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-05-02T22:50:59.624544+00:00'
+[2026-05-02T22:53:45.092+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-05-02T22:53:45.092+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/marketing_dbt && /home/***/.local/bin/dbt run --select marts']
+[2026-05-02T22:53:45.102+0000] {subprocess.py:86} INFO - Output:
+[2026-05-02T22:53:45.777+0000] {subprocess.py:93} INFO - [0m22:53:45  Running with dbt=1.8.7
+[2026-05-02T22:53:46.226+0000] {subprocess.py:93} INFO - [0m22:53:46  Registered adapter: snowflake=1.8.4
+[2026-05-02T22:53:46.408+0000] {subprocess.py:93} INFO - [0m22:53:46  Found 7 models, 16 data tests, 6 sources, 455 macros
+[2026-05-02T22:53:46.409+0000] {subprocess.py:93} INFO - [0m22:53:46
+[2026-05-02T22:53:47.829+0000] {subprocess.py:93} INFO - [0m22:53:47  Concurrency: 4 threads (target='dev')
+[2026-05-02T22:53:47.831+0000] {subprocess.py:93} INFO - [0m22:53:47
+[2026-05-02T22:53:47.837+0000] {subprocess.py:93} INFO - [0m22:53:47  1 of 1 START sql table model MARTS.mart_channel_performance .................... [RUN]
+[2026-05-02T22:53:51.939+0000] {subprocess.py:93} INFO - [0m22:53:51  1 of 1 OK created sql table model MARTS.mart_channel_performance ............... [[32mSUCCESS 1[0m in 4.09s]
+[2026-05-02T22:53:51.944+0000] {subprocess.py:93} INFO - [0m22:53:51
+[2026-05-02T22:53:51.944+0000] {subprocess.py:93} INFO - [0m22:53:51  Finished running 1 table model in 0 hours 0 minutes and 5.53 seconds (5.53s).
+[2026-05-02T22:53:51.978+0000] {subprocess.py:93} INFO - [0m22:53:51
+[2026-05-02T22:53:51.978+0000] {subprocess.py:93} INFO - [0m22:53:51  [32mCompleted successfully[0m
+[2026-05-02T22:53:51.979+0000] {subprocess.py:93} INFO - [0m22:53:51
+[2026-05-02T22:53:51.979+0000] {subprocess.py:93} INFO - [0m22:53:51  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[2026-05-02T22:53:52.609+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-05-02T22:53:52.636+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=marketing_pipeline, task_id=dbt_run_marts, execution_date=20260502T225059, start_date=20260502T225345, end_date=20260502T225352
+[2026-05-02T22:53:52.676+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-05-02T22:53:52.697+0000] {taskinstance.py:3312} INFO - 1 downstream tasks scheduled from follow-on schedule check
