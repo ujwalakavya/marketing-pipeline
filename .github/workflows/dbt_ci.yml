@@ -9,8 +9,26 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
-      - run: pip install dbt-snowflake==1.8.4
+          python-version: '3.11'
+      - run: pip install dbt-snowflake==1.10.2
+      - name: Create profiles.yml
+        run: |
+          mkdir -p ~/.dbt
+          cat > ~/.dbt/profiles.yml << EOF
+          marketing_dbt:
+            target: dev
+            outputs:
+              dev:
+                type: snowflake
+                account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+                user: ${{ secrets.SNOWFLAKE_USER }}
+                password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+                role: ACCOUNTADMIN
+                database: MARKETING_DB
+                warehouse: MARKETING_WH
+                schema: PUBLIC
+                threads: 4
+          EOF
       - run: |
           cd marketing_dbt
           dbt deps
