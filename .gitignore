@@ -5,3 +5,4 @@ __pycache__/
 .dbt/
 profiles.yml
 *.pyc
+airflow-docker/logs/
