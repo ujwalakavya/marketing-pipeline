@@ -1,6 +1,6 @@
 # Marketing Analytics Pipeline
 
-An end-to-end data engineering portfolio project that ingests automotive marketing data, transforms it into a cloud data warehouse, automatically orchestrates it, and delivers business insights via a dashboard.
+An end-to-end data engineering project that ingests automotive marketing data, transforms it into a cloud data warehouse, automatically orchestrates it, and delivers business insights via a dashboard.
 
 ---
 
@@ -181,13 +181,6 @@ docker compose up -d
 # Login: airflow / airflow
 # Trigger marketing_pipeline DAG
 ```
-
----
-
-## Resume Bullet
-
-> Engineered an end-to-end marketing analytics pipeline on Snowflake + dbt + Airflow — processing 155K+ automotive click events through a medallion architecture with first-touch attribution, CPC/CAC/ROI metrics, 16 dbt data quality tests, GitHub Actions CI/CD, and Tableau dashboard.
-
 ---
 
 ## Author
