@@ -17,6 +17,6 @@ jobs:
           dbt compile
           dbt test
         env:
-          SNOWFLAKE_USER: ${{ secrets.Ujayaram }}
-          SNOWFLAKE_PASSWORD: ${{ secrets.Uj@snowflake123j }}
-          SNOWFLAKE_ACCOUNT: ${{ secrets.DVFJSCG-ZEB13284 }}
+          SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
