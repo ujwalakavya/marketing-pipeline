@@ -1,0 +1,37 @@
+[2026-05-03T00:02:01.477+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: marketing_pipeline.dbt_run_staging scheduled__2026-05-02T00:00:00+00:00 [queued]>
+[2026-05-03T00:02:01.484+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: marketing_pipeline.dbt_run_staging scheduled__2026-05-02T00:00:00+00:00 [queued]>
+[2026-05-03T00:02:01.484+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 2
+[2026-05-03T00:02:01.493+0000] {taskinstance.py:2217} INFO - Executing <Task(BashOperator): dbt_run_staging> on 2026-05-02 00:00:00+00:00
+[2026-05-03T00:02:01.498+0000] {standard_task_runner.py:60} INFO - Started process 725 to run task
+[2026-05-03T00:02:01.501+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'marketing_pipeline', 'dbt_run_staging', 'scheduled__2026-05-02T00:00:00+00:00', '--job-id', '16', '--raw', '--subdir', 'DAGS_FOLDER/marketing_pipeline.py', '--cfg-path', '/tmp/tmp78hu64qj']
+[2026-05-03T00:02:01.503+0000] {standard_task_runner.py:88} INFO - Job 16: Subtask dbt_run_staging
+[2026-05-03T00:02:01.532+0000] {task_command.py:423} INFO - Running <TaskInstance: marketing_pipeline.dbt_run_staging scheduled__2026-05-02T00:00:00+00:00 [running]> on host ***-worker
+[2026-05-03T00:02:01.580+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ujwala' AIRFLOW_CTX_DAG_ID='marketing_pipeline' AIRFLOW_CTX_TASK_ID='dbt_run_staging' AIRFLOW_CTX_EXECUTION_DATE='2026-05-02T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-05-02T00:00:00+00:00'
+[2026-05-03T00:02:01.581+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-05-03T00:02:01.582+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/marketing_dbt && /home/***/.local/bin/dbt run --select staging']
+[2026-05-03T00:02:01.591+0000] {subprocess.py:86} INFO - Output:
+[2026-05-03T00:02:02.848+0000] {subprocess.py:93} INFO - [0m00:02:02  Running with dbt=1.8.7
+[2026-05-03T00:02:03.581+0000] {subprocess.py:93} INFO - [0m00:02:03  Registered adapter: snowflake=1.8.4
+[2026-05-03T00:02:03.892+0000] {subprocess.py:93} INFO - [0m00:02:03  Found 7 models, 16 data tests, 6 sources, 455 macros
+[2026-05-03T00:02:03.895+0000] {subprocess.py:93} INFO - [0m00:02:03
+[2026-05-03T00:20:56.950+0000] {subprocess.py:93} INFO - [0m00:20:56
+[2026-05-03T00:20:56.955+0000] {subprocess.py:93} INFO - [0m00:20:56  Finished running  in 0 hours 18 minutes and 53.05 seconds (1133.05s).
+[2026-05-03T00:20:56.956+0000] {subprocess.py:93} INFO - [0m00:20:56  Encountered an error:
+[2026-05-03T00:20:56.958+0000] {subprocess.py:93} INFO - Runtime Error
+[2026-05-03T00:20:56.958+0000] {subprocess.py:93} INFO -   Database error while listing schemas in database "MARKETING_DB"
+[2026-05-03T00:20:56.959+0000] {subprocess.py:93} INFO -   Database Error
+[2026-05-03T00:20:56.959+0000] {subprocess.py:93} INFO -     250001: Could not connect to Snowflake backend after 1 attempt(s).Aborting
+[2026-05-03T00:21:03.851+0000] {subprocess.py:97} INFO - Command exited with return code 2
+[2026-05-03T00:21:04.009+0000] {taskinstance.py:2731} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 444, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 414, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 2.
+[2026-05-03T00:21:04.070+0000] {taskinstance.py:1149} INFO - Marking task as UP_FOR_RETRY. dag_id=marketing_pipeline, task_id=dbt_run_staging, execution_date=20260502T000000, start_date=20260503T000201, end_date=20260503T002104
+[2026-05-03T00:21:04.217+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 16 for task dbt_run_staging (Bash command failed. The command returned a non-zero exit code 2.; 725)
+[2026-05-03T00:21:04.257+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2026-05-03T00:21:04.340+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check

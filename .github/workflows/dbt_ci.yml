@@ -1,0 +1,22 @@
+name: dbt CI
+on:
+  push:
+    branches: [main]
+jobs:
+  dbt-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - run: pip install dbt-snowflake==1.8.4
+      - run: |
+          cd marketing_dbt
+          dbt deps
+          dbt compile
+          dbt test
+        env:
+          SNOWFLAKE_USER: ${{ secrets.Ujayaram }}
+          SNOWFLAKE_PASSWORD: ${{ secrets.Uj@snowflake123j }}
+          SNOWFLAKE_ACCOUNT: ${{ secrets.DVFJSCG-ZEB13284 }}
